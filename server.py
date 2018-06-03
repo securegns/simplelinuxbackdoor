@@ -9,12 +9,12 @@ conn,addr=s.accept()
 while True:
     inp=input("shell:>")
     if inp == "exit":
-        conn.send("exit")
+        conn.send(b"exit")
         conn.close()
      
     elif inp.startswith("run="):
-        conn.send(inp)
-        conn.recv(1024)
+        conn.send(inp.encode())
+        print((conn.recv(1024)).decode())
 
     else:
-        pass
+        print("Enter right command")
