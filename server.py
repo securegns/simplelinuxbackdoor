@@ -6,6 +6,7 @@ s=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 s.bind((ip,port))
 s.listen(1)
 conn,addr=s.accept()
+print("[+]Connected to %s on port:%s"%(conn,port))
 while True:
     inp=input("shell:>")
     if inp == "exit":
